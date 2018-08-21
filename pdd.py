@@ -6,7 +6,7 @@ URL = 'https://pddimp.yandex.ru/api2/admin/dns/%s'
 
 def getExtIP():
     r = requests.get('https://myexternalip.com/raw')
-    return(r.text)
+    return(r.text.strip())
 
 
 class Pdd:
@@ -63,7 +63,7 @@ class Pdd:
         # print(self.__aRecord, newIp)
         oldIp = self.__aRecord.get('content')
         if (oldIp == newIp):
-            return 'No IP change detected for %s with IP %s, skipping update' % (self.domain, NewIp)
+            return 'No IP change detected for %s with IP %s, skipping update' % (self.domain, newIp)
 
         r = requests.post(URL % 'edit', data={
                         'domain': self.domain, 
