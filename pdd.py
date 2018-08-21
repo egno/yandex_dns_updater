@@ -6,7 +6,7 @@ URL = 'https://pddimp.yandex.ru/api2/admin/dns/%s'
 
 def getExtIP():
     r = requests.get('https://myexternalip.com/raw')
-    return(r.text)
+    return(r.text.strip())
 
 
 class Pdd:
